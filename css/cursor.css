@@ -1,0 +1,82 @@
+.cursor {
+    position: fixed;
+    opacity: 0;
+    pointer-events: none;
+    will-change: transform;
+    top: 0;
+    left: 0;
+    z-index: 100;
+}
+
+.cursor--normal__content.normalCursor svg {
+    width: 40px;
+    transform: translate(-6px, -6px);
+}
+
+.block-cursor {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.cursor--normal,
+.cursor--link {
+    position: fixed;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.normalCursor {
+    position: relative;
+    z-index: 999999999;
+    transform: translate(-50%, -50%);
+    width: 26px;
+    height: 26px;
+}
+
+.normalCursor {
+    content: "";
+    width: 30px;
+    height: 30px;
+    align-items: center;
+    border-radius: 50%;
+    background-color: #000000;
+    will-change: transform;
+    opacity: 1;
+    transition: height 200ms ease, width 200ms ease, opacity 200ms ease-out;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.normalCursor.cursor-hover {
+    width: 50px;
+    height: 50px;
+}
+
+body.dark-screen .normalCursor {
+    background-color: #000000;
+}
+
+.light-cursor {
+    background-color: #ffffff;
+}
+
+.linkCursor {
+    transform: translate(-50%, -50%);
+    width: 75px;
+    height: 75px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #fff;
+    border-radius: 100%;
+}
+
+@supports (mix-blend-mode: exclusion) {
+    .cursor.cursor-opacity {
+        mix-blend-mode: exclusion;
+    }
+    .cursor-opacity .normalCursor {
+        background: #fff;
+    }
+}
